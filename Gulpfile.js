@@ -103,6 +103,15 @@ var compile = gulp.parallel(css, js, html);
 // run at the start
 gulp.task('init', copy);
 
+// compiles the CSS
+gulp.task('css', css);
+
+// compiles the JavaScript
+gulp.task('js', js);
+
+// compiles the HTML
+gulp.task('html', html);
+
 // compiles all files
 gulp.task('compile', compile);
 
