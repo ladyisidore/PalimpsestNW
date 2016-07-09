@@ -21,7 +21,7 @@ To load your own game into the app, edit ``line 7`` in ``assets/js/game.js`` -- 
 
 # To Do
 
-* add liscenses
+* add licenses
 * make the ``.styl`` and ``.js`` files easier to customize for novices
 * make several different templates for presenting text adventures
 * implement loading images, sprites and audio
