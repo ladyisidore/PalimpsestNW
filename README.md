@@ -3,7 +3,7 @@ A basic template for deploying a game written in [ink](https://github.com/inkle/
 
 Put together and maintained by Isak Grozny. Forks, pull requests and other contributions very much welcome.
 
-# Installation
+## Installation
 
 These instructions written with the assumption that you don't know what any of these files do.
 
@@ -27,20 +27,20 @@ make
 
 To load your own game into the app, edit ``line 7`` in ``assets/js/game.js`` -- replace ``the-intercept.json`` with your own compiled ink file. For instructions on how to compile ``.ink`` files into ``.json``, see [ink's repo](https://github.com/inkle/ink). 
 
-# Customizing the App
+## Customizing the App
 
 * To change the *appearance* of the app, edit ``main.styl`` and run ``gulp css`` from the commandline.
 * To change the HTML layout, edit ``index.pug`` and run ``gulp html`` from the commandline.
 * To change the *behaviour* of the app, edit ``game.js`` and the JavaScript inside the ``script`` tag in ``index.pug``. Refer to [NW.js](http://docs.nwjs.io/) docs if you want to do things like add a menu, make the app fullscreen, etcetera.
 * You can add JavaScript libraries by dropping them into ``src/js`` and running ``gulp js`` from the commandline to concat (combine) and compile the scripts.
 
-# To Do
+## To Do
 
 * Add licenses
 * Make the ``.styl`` and ``.js`` files easier to customize for novices
 * Make several different templates for presenting text adventures
 * Implement loading images, sprites and audio
 
-# Caveats
+## Caveats
 
 * Make sure to include ``@require 'jeet'`` at the top of ``main.styl`` for the time being, as Jeet is not importing properly from the Gulp task.
