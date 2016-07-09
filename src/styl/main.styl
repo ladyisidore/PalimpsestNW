@@ -1,0 +1,88 @@
+@require 'jeet'
+
+rupture.scale = 0 rem(1024px)
+
+@font-face
+    font-family: 'ostrich-sans-web'
+    font-style: normal
+    font-weight: normal
+    src: url(../fonts/ostrichsans-medium-webfont.woff)
+
+@font-face
+    font-family: 'quicksand-web'
+    font-style: normal
+    font-weight: normal
+    src: url(../fonts/quicksand-regular-webfont.woff)
+
+@font-face
+    font-family: 'quicksand-web'
+    font-style: italic
+    font-weight: normal
+    src: url(../fonts/quicksand-italic-webfont.woff)
+
+edit()
+global-reset()
+
+html
+    height: 100%
+    font-size: 16px
+
+body
+    open-type-ligatures()
+    width: 100%
+    min-height: 100%
+    margin: 0
+    padding: rem(24px) 0 rem(48px)
+    font-family: 'quicksand-web'
+    font-size: rem(18px)
+    line-height: 1.33333334
+    color: #2c3e50
+    background: #ecf0f1
+
+i
+b
+em
+strong
+    font-style: italic
+    font-weight: normal
+
+h1
+h2
+h3
+h4
+h5
+h6
+    font-family: 'ostrich-sans-web'
+    font-weight: normal
+    color: #34495e
+
+p
+    margin-top: rem(24px)
+
+#play-area
+    center(max-width: rem(800px), pad: rem(20px))
+    padding-top: rem(24px)
+
+#story-area
+    padding: rem(48px) rem(72px)
+    text-align: justify
+
+#choices
+    center(max-width:rem(760px), pad:80px)
+    display: block
+    margin: 6px 0
+    text-align: center;
+
+.choice
+    cursor: pointer
+    display: inline-block
+    padding: rem(6px)
+    margin: 0 rem(3px)
+    font-family: 'ostrich-sans-web'
+    font-size: rem(24px)
+    line-height: 1
+    color: #2980b9
+
+.choice:hover
+    color: #c0392b
+    letter-spacing: rem(2px)

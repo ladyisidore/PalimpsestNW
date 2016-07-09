@@ -1,0 +1,24 @@
+doctype html
+html(lang='en')
+    head
+        title= 'The Intercept'
+        script(src='/assets/js/scripts.min.js')
+        script(src='/assets/js/ink.iife.js')
+        script(src='/assets/js/game.js')
+        link(href='/assets/css/styles.min.css' rel='stylesheet' type='text/css')
+    body
+        #play-area
+            #story-area
+            ul#choices
+        script(type='text/javascript').
+            var win = nw.Window.get();
+            var width = 1024;
+            var height = 768;
+
+            function resizeApp(){
+                win.resizeTo(width, height);
+                win.moveTo(((screen.width - width) / 2), ((screen.height - height) / 2));
+            }
+
+            nw.Screen.Init();
+            resizeApp();

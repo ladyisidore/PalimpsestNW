@@ -1,0 +1,6 @@
+all:
+	npm i -g nwjs
+	nw install 0.15.4
+	npm install
+	bower install
+	gulp init

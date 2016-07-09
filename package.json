@@ -1,0 +1,35 @@
+{
+  "name": "palimpsest.nw",
+  "version": "0.1.0",
+  "description": "A basic template for deploying a game written in ink as a stand-alone desktop app. Uses NW.JS, Stylus with Axis, Jeet and Rupture, Pug and jQuery. Primarily tested on OSX El Capitan, should theoretically work on Windows and Linux.",
+  "keywords": [
+    "ink",
+    "inkle",
+    "NWJS",
+    "indie",
+    "gaming"
+  ],
+  "author": "Isak Grozny",
+  "bugs": {
+    "web": "https://github.com/isakgrozny/palimpsest-nw/issues"
+  },
+  "license": "MIT",
+  "repository": [
+    {
+      "type": "git",
+      "url": "https://github.com/isakgrozny/palimpsest-nw"
+    }
+  ],
+  "main": "index.html",
+  "devDependencies": {
+    "axis": "^0.6.1",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-pug": "^3.0.3",
+    "gulp-rename": "^1.2.2",
+    "gulp-stylus": "^2.5.0",
+    "gulp-uglify": "^1.5.4",
+    "jeet": "6.1.2",
+    "rupture": "^0.6.1"
+  }
+}
