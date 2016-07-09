@@ -1,0 +1,2 @@
+# Palimpsest.NW
+A basic template for deploying a game written in [ink](https://github.com/inkle/ink) as a stand-alone desktop app. Uses [inkJS](https://github.com/y-lohse/inkjs), [NW.js](http://nwjs.io/), [Stylus](http://stylus-lang.com/) with Axis, [Jeet](http://jeet.gs/) and [Rupture](http://jescalan.github.io/rupture/), [Pug](http://jade-lang.com/) and jQuery. Primarily tested on OSX El Capitan, should theoretically work on Windows and Linux.
