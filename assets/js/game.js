@@ -1,4 +1,6 @@
-var myStory, $playArea, $choices;
+var myStory, $playArea, $choices, $rpgText;
+
+$(function() {$('.tlt').textillate();});
 
 $(function() {
     $playArea = $('#play-area');
@@ -25,7 +27,7 @@ function startStory(inkFile){
 
             grafs.forEach(text => {
                 if (text.length) {
-                    $.scrollTo($('<p>').text(text).hide().fadeIn(1250).appendTo('#story-area'), 600, {offset:'192px'});
+                    $('<p class="texts">').text(text).appendTo('#story-area').;
                     // $('<p>').text(text).hide().fadeIn(600).appendTo('#story-area');
                 }
             });
@@ -33,7 +35,7 @@ function startStory(inkFile){
         if (myStory.currentChoices.length > 0){
             for (var i = 0; i < myStory.currentChoices.length; ++i) {
                 var choice = myStory.currentChoices[i];
-                var $li = $('<li class="choice">').text(choice.text).hide().fadeIn(2000).appendTo($choices);
+                var $li = $('<li class="choice">').text(choice.text).hide().fadeIn(1000).appendTo($choices);
                 $li.on('click', onChoiceSelect);
             }
         }

@@ -31,13 +31,13 @@ var paths = {
 function copy(done) {
     gulp.src(paths.bower + '/inkjs/ink.iife.js')
         .pipe(gulp.dest('./assets/js'))
-    gulp.src(paths.bower + '/animate.css/animate.css')
+    gulp.src(paths.bower + '/animate.css/animate.min.css')
         .pipe(gulp.dest('./assets/css'))
     done();
 }
 
-// compiles stylus into css
-function cssCompile() {
+// compiles stylus into css, compresses the result and renames it
+function css() {
     return gulp.src(paths.styles.src)
         .pipe(styl({
                 use: [
@@ -45,28 +45,11 @@ function cssCompile() {
                     jeet(),
                     rupture()
                 ],
-                compress: false
+                compress: true
             }))
-        .pipe(gulp.dest(paths.styles.dest));
-}
-
-// concats (joins together) css files
-function cssConcat() {
-    return gulp.src([
-            paths.styles.dest + '/main.css',
-            paths.styles.dest + '/animate.css'
-            ])
-        .pipe(concat('styles.css'))
-        .pipe(gulp.dest(paths.styles.dest));
-
-}
-
-// minifies (compresses) styles.css
-function cssMinify() {
-    return gulp.src(paths.styles.dest + '/styles.css')
-        .pipe(minify())
         .pipe(rename({
-            suffix: '.min'
+                main: 'styles',
+                suffix: '.min'
         }))
         .pipe(gulp.dest(paths.styles.dest));
 }
@@ -77,6 +60,7 @@ function js() {
             paths.bower + '/jquery/dist/jquery.js',
             paths.bower + '/jquery.scrollTo/jquery.scrollTo.js',
             paths.bower + '/letteringjs/jquery.lettering.js',
+            paths.bower + '/textillate/jquery.textillate.js',
             paths.scripts.src
             ])
         .pipe(concat('scripts.js'))
@@ -96,7 +80,7 @@ function html() {
 
 // copies all required files to dist/palimpsest-nw
 function dist(done) {
-    gulp.src(paths.styles.dest + '/styles.min.css')
+    gulp.src(paths.styles.dest + '/**.min.css')
         .pipe(gulp.dest(paths.dist + '/assets/css/'))
     gulp.src(paths.scripts.dest + '/**.js')
         .pipe(gulp.dest(paths.dist + '/assets/js/'))
@@ -119,12 +103,6 @@ function watch() {
 }
 
 exports.watch = watch;
-
-var css = gulp.series(
-        cssCompile,
-        cssConcat,
-        cssMinify
-    );
 
 var compile = gulp.parallel(
         css,

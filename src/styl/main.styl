@@ -65,6 +65,17 @@ h6
 p
     margin-top: rem(24px)
 
+@keyframes noneOut
+    100% {
+        opacity: 1;
+    }
+
+.noneOut
+    animation-name: noneOut
+
+.animated.noneOut
+    animation-duration: 0.01s
+
 #play-area
     center(max-width: rem(800px), pad: rem(20px))
     padding-top: rem(24px)

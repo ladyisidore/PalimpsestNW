@@ -1,6 +1,6 @@
 all:
 	npm i -g nwjs
-	nw install 0.15.4
+	nw install 0.15.4-sdk
 	npm install
 	bower install
 	gulp init
