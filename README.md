@@ -10,6 +10,7 @@ These instructions written with the assumption that you don't know what any of t
 * Install [Make](https://www.gnu.org/software/make/), if you don't have it already. If you're a Windows user, you probably don't have it.
 * Install [Node.js](https://nodejs.org) if you don't have it already. Node.js ships with NPM, so that's two birds in the hand.
 * After you have Node.js and NPM, install [Bower](https://bower.io/#install-bower).
+* Install Gulp by running ``npm i -g gulp-cli`` in the commandline. This installs the Gulp CLI. If you already have it, make sure it's up-to-date, because this repository uses Gulp 4. 
 
 After you've done all that, clone or download this repository, open it on the commandline and run:
 
