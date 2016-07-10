@@ -1,7 +1,10 @@
+// import jeet, which doesn't automatically import for some reason I can't figure out
 @require 'jeet'
 
+// configure rupture breakpoints. currently a placeholder
 rupture.scale = 0 rem(1024px)
 
+// define font faces
 @font-face
     font-family: 'ostrich-sans-web'
     font-style: normal
@@ -20,7 +23,10 @@ rupture.scale = 0 rem(1024px)
     font-weight: normal
     src: url(../fonts/quicksand-italic-webfont.woff)
 
-edit()
+// uncomment the following line to give every block a translucent grey background to better visualise the grid
+// edit()
+
+// what it says on the tin: resets all styles
 global-reset()
 
 html

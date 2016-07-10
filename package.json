@@ -25,6 +25,7 @@
     "axis": "^0.6.1",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-concat": "^2.6.0",
+    "gulp-cssnano": "^2.1.2",
     "gulp-pug": "^3.0.3",
     "gulp-rename": "^1.2.2",
     "gulp-stylus": "^2.5.0",

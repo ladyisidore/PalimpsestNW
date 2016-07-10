@@ -1,6 +1,7 @@
 var gulp     = require('gulp'),
     concat   = require('gulp-concat'),
     rename   = require('gulp-rename'),
+    minify   = require('gulp-cssnano'),
     uglify   = require('gulp-uglify'),
     styl     = require('gulp-stylus'),
     jeet     = require('jeet'),
@@ -27,13 +28,16 @@ var paths = {
 };
 
 // moves the ink.iife.js file from the bower directory to the Palimpsest.NW main directory
-function copy() {
-    return gulp.src(paths.bower + '/inkjs/ink.iife.js')
+function copy(done) {
+    gulp.src(paths.bower + '/inkjs/ink.iife.js')
         .pipe(gulp.dest('./assets/js'))
+    gulp.src(paths.bower + '/animate.css/animate.css')
+        .pipe(gulp.dest('./assets/css'))
+    done();
 }
 
-// compiles stylus into css, minifies the result
-function css() {
+// compiles stylus into css
+function cssCompile() {
     return gulp.src(paths.styles.src)
         .pipe(styl({
                 use: [
@@ -41,20 +45,38 @@ function css() {
                     jeet(),
                     rupture()
                 ],
-                compress: true
+                compress: false
             }))
+        .pipe(gulp.dest(paths.styles.dest));
+}
+
+// concats (joins together) css files
+function cssConcat() {
+    return gulp.src([
+            paths.styles.dest + '/main.css',
+            paths.styles.dest + '/animate.css'
+            ])
+        .pipe(concat('styles.css'))
+        .pipe(gulp.dest(paths.styles.dest));
+
+}
+
+// minifies (compresses) styles.css
+function cssMinify() {
+    return gulp.src(paths.styles.dest + '/styles.css')
+        .pipe(minify())
         .pipe(rename({
-            basename: 'styles',
             suffix: '.min'
         }))
         .pipe(gulp.dest(paths.styles.dest));
 }
 
-// concats (joins together) javascript files, uglifies (compresses) them
+// concats javascript files, uglifies (compresses) them
 function js() {
     return gulp.src([
             paths.bower + '/jquery/dist/jquery.js',
             paths.bower + '/jquery.scrollTo/jquery.scrollTo.js',
+            paths.bower + '/letteringjs/jquery.lettering.js',
             paths.scripts.src
             ])
         .pipe(concat('scripts.js'))
@@ -73,7 +95,7 @@ function html() {
 }
 
 // copies all required files to dist/palimpsest-nw
-function dist(cb) {
+function dist(done) {
     gulp.src(paths.styles.dest + '/styles.min.css')
         .pipe(gulp.dest(paths.dist + '/assets/css/'))
     gulp.src(paths.scripts.dest + '/**.js')
@@ -86,7 +108,7 @@ function dist(cb) {
             './the-intercept.json' // replace with the path to your game's .json
             ])
         .pipe(gulp.dest(paths.dist))
-    cb();
+    done();
 }
 
 // automatically executes compilation tasks when watched files change
@@ -98,7 +120,17 @@ function watch() {
 
 exports.watch = watch;
 
-var compile = gulp.parallel(css, js, html);
+var css = gulp.series(
+        cssCompile,
+        cssConcat,
+        cssMinify
+    );
+
+var compile = gulp.parallel(
+        css,
+        js,
+        html
+    );
 
 // run at the start
 gulp.task('init', copy);
@@ -116,7 +148,10 @@ gulp.task('html', html);
 gulp.task('compile', compile);
 
 // compiles all files and moves all required files to dist/palimpsest-nw
-gulp.task('dist', gulp.series([compile, dist]));
+gulp.task('dist', gulp.series(
+        compile,
+        dist
+    ));
 
 // default task; executes the watch task
 gulp.task('default', watch);
