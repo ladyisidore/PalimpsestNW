@@ -31,8 +31,6 @@ var paths = {
 function copy(done) {
     gulp.src(paths.bower + '/inkjs/ink.iife.js')
         .pipe(gulp.dest('./assets/js'))
-    gulp.src(paths.bower + '/animate.css/animate.min.css')
-        .pipe(gulp.dest('./assets/css'))
     done();
 }
 
@@ -59,8 +57,6 @@ function js() {
     return gulp.src([
             paths.bower + '/jquery/dist/jquery.js',
             paths.bower + '/jquery.scrollTo/jquery.scrollTo.js',
-            paths.bower + '/letteringjs/jquery.lettering.js',
-            paths.bower + '/textillate/jquery.textillate.js',
             paths.scripts.src
             ])
         .pipe(concat('scripts.js'))
